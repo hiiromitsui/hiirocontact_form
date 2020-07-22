@@ -1,5 +1,5 @@
 <?php
-
+// スーパーグローバル変数
 // shift+option+↓
 $nickname=$_POST['nickname'];
 // Command(Ctr)+d

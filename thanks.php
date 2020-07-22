@@ -4,7 +4,27 @@ $nickname=$_POST['nickname'];
 $email=$_POST['email'];
 $content=$_POST['content'];
 
-// echo $nickname;
+// １　データベースに接続する
+$host= 'localhost';
+$dbname='phpkiso';
+$charset='utf8mb4';
+$user='root';
+$password='';
+
+$dsn =  "mysql:host=$host;dbname=$dbname;
+charset=$charset";
+$dbh=new PDO($dsn,$user,$password);
+
+// ２　SQL文を実行する
+$sql='INSERT INTO `survey`(`nickname`,`email`,`content`)VALUES ("'.$nickname.'",
+"'.$email.'","'.$content.'")';
+
+$stmt = $dbh->prepare($sql);
+$stmt->execute();
+
+// ３　データベースを切断する
+$dbh=null;
+
 
 
 ?>
